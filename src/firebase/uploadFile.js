@@ -26,7 +26,8 @@ const storage = getStorage();
 
 const uploadImage = async (req, res) => {
   //   console.log(firebaseConfig);
-  //   console.log("first");
+    // console.log(req.files);
+  if(!req.files || req.files=== undefined || req.files.length === 0) return res.status(400).send({status: false, message: "Please select the file again"})
   const dateTime = giveCurrentDateTime();
 
   const storageRef = ref(

@@ -317,21 +317,21 @@ const getFilterItems = async function (req, res) {
       }
     }
     let allTags = Object.keys(allTagsObj);
-    let allTAgsOutputObj = {};
-    let i = 1,
-      j = 1;
-    for (let item of allTags) {
-      allTAgsOutputObj[`tags${i}`] = item;
-      i++;
-    }
+    // let allTAgsOutputObj = {};
+    // let i = 1,
+    //   j = 1;
+    // for (let item of allTags) {
+    //   allTAgsOutputObj[`tags${i}`] = item;
+    //   i++;
+    // }
     let allSubcategory = Object.keys(allSubcategoryObj);
-    let allSubCatOutputObj = {};
-    for (let itm of allSubcategory) {
-      allSubCatOutputObj[`subcategory${j}`] = itm;
-      j++;
-    }
-    console.log(allTAgsOutputObj);
-    console.log(allSubCatOutputObj);
+    // let allSubCatOutputObj = {};
+    // for (let itm of allSubcategory) {
+    //   allSubCatOutputObj[`subcategory${j}`] = itm;
+    //   j++;
+    // }
+    // console.log(allTAgsOutputObj);
+    // console.log(allSubCatOutputObj);
     return res.status(200).send({
       status: true,
       message: "success",
