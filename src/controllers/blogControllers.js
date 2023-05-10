@@ -85,6 +85,39 @@ const getBlogs = async function (req, res) {
   }
 };
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>...
+
+const getBlogsById = async function (req, res) {
+  try {
+    let blogId = req.params.id
+
+    if (!ObjectId.isValid(blogId)) {
+      return res
+        .status(400)
+        .send({ status: false, message: "Bad Request. BlogId invalid" });
+    }
+
+    let getTheBlog = await blogModel.findOne({_id: blogId})
+    // console.log(getTheBlog)
+    if (!getTheBlog) {
+      return res.status(404).send({
+        status: false,
+        message:
+          "Page/Resource not found. Blog Document doesnot exist for this filter",
+      });
+    } else {
+      return res.status(200).send({
+        status: true,
+        message: "Success",
+        data: getTheBlog,
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ status: false, message: err.message });
+  }
+};
+
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 const getBlogsByFilter = async function (req, res) {
@@ -354,3 +387,4 @@ module.exports.deleteBlogIdAndQuery = deleteBlogIdAndQuery;
 module.exports.getBlogsByFilter = getBlogsByFilter;
 module.exports.getBlogsByAuthor = getBlogsByAuthor;
 module.exports.getFilterItems = getFilterItems;
+module.exports.getBlogsById = getBlogsById

@@ -26,6 +26,8 @@ router.post(
 
 router.get("/blogs", authentication.authentication, blogController.getBlogs);
 
+router.get("/blogs/:id", blogController.getBlogsById)
+
 router.get("/allblogs", blogController.getBlogs);
 
 router.get(
