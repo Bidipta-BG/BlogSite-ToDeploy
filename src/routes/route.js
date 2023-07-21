@@ -24,7 +24,7 @@ router.post(
   blogController.createBlog
 );
 
-router.get("/blogs", authentication.authentication, blogController.getBlogs);
+router.get("/getlatestblogs", authentication.authentication, blogController.getBlogs);
 
 router.get("/blogs/:id", blogController.getBlogsById)
 
